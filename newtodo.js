@@ -1,37 +1,17 @@
+import TodoList from "./list.js";
+
 const print = console.log
 
 export default class Todo {
+
+  todoList
+
+
   constructor() {
     print("Den här är min Todo List")
-    this.todoList = []; // Define todoList as a class property
+    this.todoList = new TodoList();
   }
 
-  addToList(todoItem) {
-    this.todoList.push(todoItem);
-    return this.todoList;
-  }
-
-  addToTopOfList(task) {
-    this.todoList.unshift(task);
-    return this.todoList;
-  }
-
-  removeFromByIndex(index) {
-    if (index < 0 || index >= this.todoList.length) {
-      return null;
-    }
-    let removeItem = this.todoList.splice(index, 1);
-    return removeItem;
-  }
-
-  removeFromListByName(name) {
-    const index = this.todoList.findIndex(item => item === name);
-    if (index !== -1) {
-      return this.removeFromByIndex(index);
-    }
-    return null;
-  }
-  
   moveUp(todoList, name) {
   const index = todoList.findIndex(item => item === name); // Hitta index för saken med det angivna namnet
   if (index !== -1 && index > 0) { // Om saken finns i listan och inte redan längst upp
@@ -43,10 +23,6 @@ export default class Todo {
 console.log('Uppdaterad att göra-lista:', todoList);
 }
 
-// Exempel användning
-
-
-
 
 // addToList({beskrivning:'Handla mat till katten'});
 }
@@ -54,17 +30,17 @@ console.log('Uppdaterad att göra-lista:', todoList);
 // Example usage:
 const myTodo = new Todo();
 
-myTodo.addToList('Handla');
-myTodo.addToList('laga mat');
-myTodo.addToList('dansa');
+myTodo.todoList.addToList('Handla');
+myTodo.todoList.addToList('laga mat');
+myTodo.todoList.addToList('dansa');
 
 print('todoList', myTodo.todoList);
 
-myTodo.addToTopOfList('tvätta');
+myTodo.todoList.addToTopOfList('tvätta');
 print(myTodo.todoList);
 
-myTodo.addToTopOfList('städa');
+myTodo.todoList.addToTopOfList('städa');
 print(myTodo.todoList);
 
-myTodo.removeFromListByName('tvätta');
+myTodo.todoList.removeFromListByName('tvätta');
 print(myTodo.todoList);
