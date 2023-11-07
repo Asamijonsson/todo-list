@@ -4,12 +4,12 @@ const print = console.log
 
 export default class Todo {
 
-  todoList
+  newtodoList
 
 
   constructor() {
     print("Den här är min Todo List")
-    this.todoList = new TodoList();
+    this.newtodoList = new TodoList();
   }
 
   moveUp(todoList, name) {
@@ -30,17 +30,17 @@ console.log('Uppdaterad att göra-lista:', todoList);
 // Example usage:
 const myTodo = new Todo();
 
-myTodo.todoList.addToList('Handla');
-myTodo.todoList.addToList('laga mat');
-myTodo.todoList.addToList('dansa');
+myTodo.newtodoList.addToList('Handla');
+myTodo.newtodoList.addToList('laga mat');
+myTodo.newtodoList.addToList('dansa');
 
-print('todoList', myTodo.todoList);
+print( myTodo.newtodoList.todoList);
 
-myTodo.todoList.addToTopOfList('tvätta');
-print(myTodo.todoList);
+// myTodo.todoList.addToTopOfList('tvätta');
+// print(myTodo.todoList);
 
-myTodo.todoList.addToTopOfList('städa');
-print(myTodo.todoList);
+// myTodo.todoList.addToTopOfList('städa');
+// print(myTodo.todoList);
 
-myTodo.todoList.removeFromListByName('tvätta');
-print(myTodo.todoList);
+// myTodo.todoList.removeFromListByName('tvätta');
+// print(myTodo.todoList);
