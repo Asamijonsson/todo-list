@@ -1,6 +1,9 @@
+import { writeFileSync } from 'node:fs';
+
 export default class TodoList {
-  constructor() {
-    this.todoList=[]
+
+ constructor() {
+    this.todoList = []; // Initialize todoList as an empty array
   }
 
   addToList(todoItem) {
@@ -30,4 +33,11 @@ export default class TodoList {
     return null;
   }
 
+
+
+saveToFile() {
+    const fileName = "./todoList.csv";
+    const csvData = this.todoList.join("\n");
+    writeFileSync(fileName, csvData, 'utf8');
+  }
 }
