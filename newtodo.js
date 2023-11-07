@@ -1,4 +1,6 @@
 import TodoList from "./list.js";
+import { readFileSync } from 'node:fs'
+import { writeFileSync } from 'node:fs';
 
 const print = console.log
 
@@ -29,12 +31,13 @@ console.log('Uppdaterad att göra-lista:', todoList);
 
 // Example usage:
 const myTodo = new Todo();
+const newTodo = myTodo.newtodoList
 
-myTodo.newtodoList.addToList('Handla');
-myTodo.newtodoList.addToList('laga mat');
-myTodo.newtodoList.addToList('dansa');
+newTodo.addToList('Handla');
+newTodo.addToList('laga mat');
+newTodo.addToList('dansa');
 
-print( myTodo.newtodoList.todoList);
+print( newTodo.todoList);
 
 // myTodo.todoList.addToTopOfList('tvätta');
 // print(myTodo.todoList);
@@ -44,3 +47,10 @@ print( myTodo.newtodoList.todoList);
 
 // myTodo.todoList.removeFromListByName('tvätta');
 // print(myTodo.todoList);
+
+const newTodos = newTodo.todoList.join('\n');
+
+// Save the todos to a file
+const fileName = "todoList.txt";
+writeFileSync(fileName, newTodos, 'utf8');
+console.log("Todos saved successfully in " + fileName);
